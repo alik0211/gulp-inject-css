@@ -1,6 +1,6 @@
 # gulp-inject-css
 
-Inject css file to html <style> tag
+Inject css file to html
 
 ## Install
 
@@ -11,7 +11,7 @@ npm install gulp-inject-css --save-dev
 ## Example
 
 app/css/main.css
-```
+```css
 * { box-sizing: border-box; }
 ```
 

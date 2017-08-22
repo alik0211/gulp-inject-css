@@ -1,7 +1,7 @@
 {
   "name": "gulp-inject-css",
-  "version": "0.3.0",
-  "description": "Inject css file to html <style> tag",
+  "version": "0.3.1",
+  "description": "Inject css file to html",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/index.js"
