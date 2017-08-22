@@ -7,7 +7,7 @@ const PLUGIN_NAME = 'gulp-inject-css';
 module.exports = function() {
   'use strict';
 
-  const PATTERN = '<\\!--\\s*inject-css\\s*(.*?)\\s*-->';
+  const PATTERN = /<\!--\s*inject-css\s*(.*?)\s*-->/gi;
 
   let self = null;
 
@@ -41,7 +41,7 @@ module.exports = function() {
     if (file.isBuffer()) {
       let contents = String(file.contents);
 
-      contents = contents.replace(new RegExp(PATTERN, 'gi'), function(match, src) {
+      contents = contents.replace(PATTERN, function(match, src) {
         return getStyle(file.base + src);
       });
 
