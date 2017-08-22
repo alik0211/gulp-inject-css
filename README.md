@@ -4,7 +4,7 @@ Inject css file to html
 
 ## Install
 
-```
+```shell
 npm install gulp-inject-css --save-dev
 ```
 
