@@ -38,4 +38,30 @@ describe('gulp-inject-css', function() {
     stream.write(srcFile);
     stream.end();
   });
+
+  it('should error on stream', function(done) {
+
+    const srcFile = new File({
+      path: 'test/fixtures/index.html',
+      cwd: 'test/',
+      base: 'test/fixtures',
+      contents: fs.createReadStream('test/fixtures/index.html')
+    });
+
+    const stream = injectCSS();
+
+    stream.on('error', function(err) {
+      should.exist(err);
+      done();
+    });
+
+    stream.on('data', function(newFile) {
+      newFile.contents.pipe(es.wait(function(err) {
+        done(err);
+      }));
+    });
+
+    stream.write(srcFile);
+    stream.end();
+  });
 });
