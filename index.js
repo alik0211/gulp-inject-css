@@ -9,23 +9,7 @@ module.exports = function() {
 
   const PATTERN = /<\!--\s*inject-css\s*(.*?)\s*-->/gi;
 
-  let self = null;
-
-  function throwError(msg) {
-    self.emit('error', new PluginError(PLUGIN_NAME, msg));
-  }
-
-  function getStyle(source) {
-    if (source) {
-      return '<style>\n' + fs.readFileSync(source) + '\n</style>';
-    } else {
-      throwError('No source file specified.');
-    }
-  }
-
   function styleInject(file, enc, callback) {
-
-    self = this;
 
     if (file.isNull()) {
       this.push(file);
@@ -33,8 +17,7 @@ module.exports = function() {
     }
 
     if (file.isStream()) {
-      this.emit('error',
-        new PluginError(PLUGIN_NAME, 'Stream content is not supported'));
+      this.emit('error', new PluginError(PLUGIN_NAME, 'Stream not supported'));
       return callback();
     }
 
@@ -42,7 +25,7 @@ module.exports = function() {
       let contents = String(file.contents);
 
       contents = contents.replace(PATTERN, function(match, src) {
-        return getStyle(file.base + src);
+        return '<style>\n' + fs.readFileSync(file.base + src) + '\n</style>';
       });
 
       file.contents = new Buffer(contents);
