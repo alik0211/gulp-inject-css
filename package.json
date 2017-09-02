@@ -1,6 +1,6 @@
 {
   "name": "gulp-inject-css",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Inject css file to html",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,6 @@
   },
   "devDependencies": {
     "mocha": "^3.5.0",
-    "should": "^11.2.1"
+    "should": "^12.0.0"
   }
 }
