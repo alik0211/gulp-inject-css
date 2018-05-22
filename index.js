@@ -25,7 +25,7 @@ module.exports = function() {
       let contents = String(file.contents);
 
       contents = contents.replace(PATTERN, function(match, src) {
-        return '<style>\n' + fs.readFileSync(file.base + src) + '\n</style>';
+        return '<style>\n' + fs.readFileSync(file.base + '/' + src) + '\n</style>';
       });
 
       file.contents = new Buffer(contents);

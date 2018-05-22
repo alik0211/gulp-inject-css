@@ -1,6 +1,6 @@
 {
   "name": "gulp-inject-css",
-  "version": "0.3.10",
+  "version": "0.4.0",
   "description": "Inject css file to html",
   "main": "index.js",
   "scripts": {
