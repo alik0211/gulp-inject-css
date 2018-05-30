@@ -1,5 +1,7 @@
 # gulp-inject-css
 
+
+[![Travis](https://img.shields.io/travis/alik0211/gulp-inject-css.svg?style=flat-square)](https://travis-ci.org/alik0211/gulp-inject-css)
 [![Dependency Status](https://img.shields.io/david/alik0211/gulp-inject-css.svg?label=deps&style=flat-square)](https://david-dm.org/alik0211/gulp-inject-css)
 [![devDependency Status](https://img.shields.io/david/dev/alik0211/gulp-inject-css.svg?label=devDeps&style=flat-square)](https://david-dm.org/alik0211/gulp-inject-css?type=dev)
 
