@@ -1,6 +1,6 @@
 const fs = require('fs');
 const through = require('through2').obj;
-const PluginError = require('gulp-util').PluginError;
+const PluginError = require('plugin-error');
 
 const PLUGIN_NAME = 'gulp-inject-css';
 
@@ -9,7 +9,7 @@ module.exports = function() {
 
   const PATTERN = /<\!--\s*inject-css\s*(.*?)\s*-->/gi;
 
-  function styleInject(file, enc, callback) {
+  function styleInject(file, _enc, callback) {
 
     if (file.isNull()) {
       this.push(file);
@@ -24,7 +24,7 @@ module.exports = function() {
     if (file.isBuffer()) {
       let contents = String(file.contents);
 
-      contents = contents.replace(PATTERN, function(match, src) {
+      contents = contents.replace(PATTERN, function(_match, src) {
         return '<style>\n' + fs.readFileSync(file.base + '/' + src) + '\n</style>';
       });
 

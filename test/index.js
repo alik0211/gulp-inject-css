@@ -1,19 +1,18 @@
 const fs = require('fs');
-const assert = require('assert');
 const should = require('should');
-const File = require('gulp-util').File;
+const Vinyl = require('vinyl');
 const injectCSS = require('../');
 
 describe('gulp-inject-css', function() {
   it('should produce expected file', function(done) {
 
-    const srcFile = new File({
+    const srcFile = new Vinyl({
       path: 'test/fixtures/index.html',
       base: 'test/fixtures/',
       contents: fs.readFileSync('test/fixtures/index.html')
     });
 
-    const expectedFile = new File({
+    const expectedFile = new Vinyl({
       path: 'test/expected/index.html',
       base: 'test/expected/',
       contents: fs.readFileSync('test/expected/index.html')
@@ -21,9 +20,9 @@ describe('gulp-inject-css', function() {
 
     const stream = injectCSS();
 
-    stream.on('error', function(err) {
-      should.exist(err);
-      done(err);
+    stream.on('error', function(error) {
+      should.exist(error);
+      done(error);
     });
 
     stream.on('data', function(newFile) {
@@ -41,7 +40,7 @@ describe('gulp-inject-css', function() {
 
   it('should error on stream', function(done) {
 
-    const srcFile = new File({
+    const srcFile = new Vinyl({
       path: 'test/fixtures/index.html',
       cwd: 'test/',
       base: 'test/fixtures',
@@ -50,14 +49,14 @@ describe('gulp-inject-css', function() {
 
     const stream = injectCSS();
 
-    stream.on('error', function(err) {
-      should.exist(err);
+    stream.on('error', function(error) {
+      should.exist(error);
       done();
     });
 
     stream.on('data', function(newFile) {
-      newFile.contents.pipe(es.wait(function(err) {
-        done(err);
+      newFile.contents.pipe(es.wait(function(error) {
+        done(error);
       }));
     });
 
