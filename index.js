@@ -4,13 +4,12 @@ const PluginError = require('plugin-error');
 
 const PLUGIN_NAME = 'gulp-inject-css';
 
-module.exports = function() {
+module.exports = function () {
   'use strict';
 
   const PATTERN = /<\!--\s*inject-css\s*(.*?)\s*-->/gi;
 
   function styleInject(file, _enc, callback) {
-
     if (file.isNull()) {
       this.push(file);
       return callback();
@@ -24,11 +23,13 @@ module.exports = function() {
     if (file.isBuffer()) {
       let contents = String(file.contents);
 
-      contents = contents.replace(PATTERN, function(_match, src) {
-        return '<style>\n' + fs.readFileSync(file.base + '/' + src) + '\n</style>';
+      contents = contents.replace(PATTERN, function (_match, src) {
+        return (
+          '<style>\n' + fs.readFileSync(file.base + '/' + src) + '\n</style>'
+        );
       });
 
-      file.contents = new Buffer(contents);
+      file.contents = Buffer.from(contents);
       this.push(file);
       return callback();
     }
