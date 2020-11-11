@@ -1,6 +1,6 @@
 # gulp-inject-css
 
-[![Travis](https://img.shields.io/travis/alik0211/gulp-inject-css.svg?style=flat-square)](https://travis-ci.com/alik0211/gulp-inject-css)
+[![GitHub Actions](https://img.shields.io/github/workflow/status/alik0211/gulp-inject-css/Unit%20tests/master?style=flat-square)](https://github.com/alik0211/gulp-inject-css/actions?query=branch%3Amaster)
 [![Dependency Status](https://img.shields.io/david/alik0211/gulp-inject-css.svg?label=deps&style=flat-square)](https://david-dm.org/alik0211/gulp-inject-css)
 [![devDependency Status](https://img.shields.io/david/dev/alik0211/gulp-inject-css.svg?label=devDeps&style=flat-square)](https://david-dm.org/alik0211/gulp-inject-css?type=dev)
 
